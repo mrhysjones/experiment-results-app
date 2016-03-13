@@ -5,14 +5,14 @@ var ResultSchema = new mongoose.Schema({
   itemID: {type: String, required: true}, 
   resultData: [{
   	emotionData: [{
-  		happy: String, 
-  		sad: String, 
-  		surprise: String, 
-  		fear: String, 
-  		disgust: String, 
-  		neutral: String, 
-  		anger: String, 
-  		contempt: String
+  		angry: Number, 
+  		contempt: Number, 
+  		disgust: Number, 
+  		fear: Number, 
+  		happy: Number, 
+  		sadness: Number, 
+  		surprise: Number, 
+  		neutral: Number
   	}], 
     trackingData: [{
       data: Array
