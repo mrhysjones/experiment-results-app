@@ -13,7 +13,7 @@
 		<tbody>
 			<tr ng-repeat="result in results">
 				<td>{{$index + 1}}</td>
-				<td>{{result.resultData.length}}</td>
+				<td>{{result.resultData.trackingData.length}}</td>
 				<td><a href='/result/{{result._id}}'>View</a></td>
 				<td><a ng-click="delete(result._id)">Delete</a></td>
 			</tr>
