@@ -1,2 +1,2 @@
-angular.module('resultsApp', ['ngRoute', 'monospaced.qrcode', 'ngResource', 'appRoutes', 'chart.js',
+angular.module('resultsApp', ['ngRoute', 'ngResource', 'appRoutes', 'nvd3',
 	'ResultsCtrl', 'ResultDetailCtrl', 'ResultService', 'ExperimentService', 'ui.bootstrap']);

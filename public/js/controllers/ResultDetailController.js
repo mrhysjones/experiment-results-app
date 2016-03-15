@@ -3,49 +3,92 @@ angular.module('ResultDetailCtrl', ['ResultService', 'ExperimentService'])
 
 	ResultService.get({id: $routeParams.id},function(result){
 		$scope.result = result; 
-		ExperimentService.get({id: $scope.result.experimentID},function(exp){
-			$scope.experiment = exp; 
-			$scope.experimentName = $scope.experiment.name; 
-			console.log($scope.experimentName);
-		});
 
 		$scope.emotionData = $scope.result.resultData[0].emotionData;
-		$scope.angryData = emotionChartData($scope.emotionData, 'angry');
-		$scope.contemptData = emotionChartData($scope.emotionData, 'contempt');
-		$scope.disgustData = emotionChartData($scope.emotionData, 'disgust');
-		$scope.fearData = emotionChartData($scope.emotionData, 'fear');
-		$scope.happyData = emotionChartData($scope.emotionData, 'happy');
-		$scope.sadnessData = emotionChartData($scope.emotionData, 'sadness');
-		$scope.surpriseData = emotionChartData($scope.emotionData, 'surprise');
-		$scope.neutralData = emotionChartData($scope.emotionData, 'neutral');
 
-		$scope.labels = generateLabels($scope.emotionData.length);
-
-		$scope.series = ["Angry", "Contempt", "Disgust", "Fear", "Happy", "Sadness", "Surprise", "Neutral"];
-		$scope.data = [$scope.angryData, $scope.contemptData, $scope.disgustData, $scope.fearData, $scope.happyData, 
-		$scope.sadnessData, $scope.surpriseData, $scope.neutralData];
-		$scope.onClick = function (points, evt) {
-			console.log(points, evt);
-		};
-	});
-
-
-
-
-
-	function generateLabels(emotionLength){
-		var labels = [];
-		for (var i = 0; i < emotionLength; i++){
-			labels.push("");
+		$scope.options = {chart: {
+			type: 'lineChart',
+			height: 450,
+			margin : {
+				top: 20,
+				right: 20,
+				bottom: 40,
+				left: 55
+			},
+			x: function(d){ return d.x; },
+			y: function(d){ return d.y; },
+			useInteractiveGuideline: true,
+			dispatch: {
+				stateChange: function(e){ console.log("stateChange"); },
+				changeState: function(e){ console.log("changeState"); },
+				tooltipShow: function(e){ console.log("tooltipShow"); },
+				tooltipHide: function(e){ console.log("tooltipHide"); }
+			},
+			xAxis: {
+				axisLabel: 'Frame Number'
+			},
+			yAxis: {
+				axisLabel: 'Confidence value',
+				tickFormat: function(d){
+					return d3.format('.02f')(d);
+				},
+				axisLabelDistance: -10
+			},
+		},
+		title: {
+			enable: true,
+			text: 'Emotion Experiment Results'
+		},
+		subtitle: {
+			enable: true,
+			text: 'Original item source', 
+			css: {
+				'text-align': 'center',
+			}
 		}
-		return labels;
+	};
+
+	$scope.data = [{
+		values: emotionChartData($scope.emotionData, 'angry'),
+		key: 'Angry'
+	},
+	{
+		values: emotionChartData($scope.emotionData, 'contempt'), 
+		key: 'Contempt'
+	}, 
+	{
+		values: emotionChartData($scope.emotionData, 'disgust'), 
+		key: 'Disgust'
+	}, 
+	{
+		values: emotionChartData($scope.emotionData, 'fear'), 
+		key: 'Fear'
+	}, 
+	{
+		values: emotionChartData($scope.emotionData, 'happy'), 
+		key: 'Happy'
+	}, 
+	{
+		values: emotionChartData($scope.emotionData, 'sadness'), 
+		key: 'Sadness'
+	}, 
+	{
+		values: emotionChartData($scope.emotionData, 'surprise'), 
+		key: 'Surprise'
+	}, 
+	{
+		values: emotionChartData($scope.emotionData, 'neutral'), 
+		key: 'Neutral'
 	}
+	];
+
+});
+	
 
 	function emotionChartData(emotionData, emotion){
 		var emotions = [];
 		for(var i = 0; i < emotionData.length; i++) {
-
-			emotions.push(emotionData[i][emotion]);
+			emotions.push({x: i, y: emotionData[i][emotion]});
 		}
 		return emotions;
 	}

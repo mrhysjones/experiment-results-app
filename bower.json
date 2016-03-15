@@ -8,7 +8,7 @@
         "angular": "latest",
         "angular-route": "latest", 
         "angular-resource" : "latest", 
-        "angular-qrcode" : "latest", 
+        "angular-nvd3" : "latest", 
         "jquery": "latest", 
         "angular-ui-bootstrap" : "latest"
     }
