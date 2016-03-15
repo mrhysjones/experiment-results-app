@@ -33,7 +33,8 @@ angular.module('ResultDetailCtrl', ['ResultService', 'ExperimentService'])
 					return d3.format('.02f')(d);
 				},
 				axisLabelDistance: -10
-			},
+			}, 
+			yDomain: [0,1]
 		},
 		title: {
 			enable: true,
