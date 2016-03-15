@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +8,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="libs/angular-chart.js/dist/angular-chart.css">
     <link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
 
     <!-- JS -->
@@ -19,6 +20,8 @@
     <script src="libs/qrcode-generator/js/qrcode.js"></script>
     <script src="libs/angular-qrcode/angular-qrcode.js"></script>
     <script src="libs/ui-bootstrap/ui-bootstrap-tpls-1.1.2.min.js"></script>
+    <script src="libs/chart.js/Chart.min.js"></script>
+    <script src="libs/angular-chart.js/dist/angular-chart.js"></script>
 
     <!-- AngularJS Controllers -->
     <script src="js/controllers/ResultsController.js"></script>
@@ -26,6 +29,7 @@
 
     <!-- AngularJS Services --> 
     <script src="js/services/ResultService.js"></script>
+    <script src="js/services/ExperimentService.js"></script>
 
     <!-- AngularJS routes --> 
     <script src="js/appRoutes.js"></script>
@@ -48,8 +52,11 @@
     <!-- AngularJS content -->
     <div ng-view class="container">
         
-    </div>
     </div> 
+</div>
+</br>
+</br>
+</br>
 
     <!-- Footer -->
     <div id="footer" class="panel-footer">
@@ -57,9 +64,5 @@
     Matthew Jones (2016)
     </div>
     </div>
-
-
-
-</div>
 </body>
 </html>

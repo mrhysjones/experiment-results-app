@@ -10,7 +10,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         })
 
         // Experiment Detail Page
-        .when('/results/:id', {
+        .when('/result/:id', {
             templateUrl: 'views/result.html',
             controller: 'ResultDetailController'
         })
