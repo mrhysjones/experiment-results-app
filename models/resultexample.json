@@ -1,6 +1,13 @@
 {
 	"experimentID": "354245", 
-	"itemID": "3525354",  
+	"experimentName": "Test experiment", 
+	"itemData": [{
+		"itemID": "45t345t3",
+		"data": "342353255", 
+		"dataType": "twitter",
+		"displaySeconds": 10 
+	}]
+	,  
 	"resultData": [
 	{
 		"emotionData": [{

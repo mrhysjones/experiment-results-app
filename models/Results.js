@@ -2,7 +2,13 @@ var mongoose = require('mongoose');
 
 var ResultSchema = new mongoose.Schema({
   experimentID: {type: String, required: true},
-  itemID: {type: String, required: true}, 
+  experimentName: {type: String, required: true}, 
+  itemData: [{
+    itemID: {type: String, required: true}, 
+    data: {type: String, required: true},
+    dataType: {type: String, enum: ['twitter', 'youtube', 'webpage'], required: true}, 
+    displaySeconds: {type: Number, required: true}
+  }], 
   resultData: [{
   	emotionData: [{
   		angry: Number, 

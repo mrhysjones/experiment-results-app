@@ -42,7 +42,7 @@ angular.module('ResultDetailCtrl', ['ResultService', 'ExperimentService'])
 		},
 		subtitle: {
 			enable: true,
-			text: 'Original item source', 
+			html: '<a href=""> Original item source</a>', 
 			css: {
 				'text-align': 'center',
 			}
@@ -82,9 +82,7 @@ angular.module('ResultDetailCtrl', ['ResultService', 'ExperimentService'])
 		key: 'Neutral'
 	}
 	];
-
 });
-	
 
 	function emotionChartData(emotionData, emotion){
 		var emotions = [];
