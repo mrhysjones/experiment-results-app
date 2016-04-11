@@ -6,6 +6,34 @@ angular.module('ResultDetailCtrl', ['ResultService', 'ExperimentService'])
 
 		$scope.emotionData = $scope.result.resultData[0].emotionData;
 
+						// Function used to construct URL for item href - requires item type and data
+						$scope.constructHrefUrl = function(type, data){
+							var hrefUrl = ""; 
+							switch(type){
+		// Assume in the format 'https://twitter.com/*Username/status/*ID'
+		case 'twitter':
+		hrefUrl = data;
+		break; 
+
+		// Assume just the video ID passed in - construct YouTube watch URL		
+		case 'youtube':
+		hrefUrl = 'https://www.youtube.com/watch?v=' + data; 
+		break;
+
+				// Check if absolute URL - append 'http://' if required
+				case 'webpage':
+				if (data.substring(0, 4) != 'http'){
+					data = 'http://' + data; 
+				}
+				hrefUrl = data; 
+				break;
+			}
+			return hrefUrl;
+		};
+
+
+		$scope.itemSource = $scope.constructHrefUrl($scope.result.itemData[0].dataType, $scope.result.itemData[0].data)		
+		console.log($scope.itemSource)
 		$scope.options = {chart: {
 			type: 'lineChart',
 			height: 450,
@@ -38,11 +66,11 @@ angular.module('ResultDetailCtrl', ['ResultService', 'ExperimentService'])
 		},
 		title: {
 			enable: true,
-			text: 'Emotion Experiment Results'
+			text: 'Emotion Experiment Results' 
 		},
 		subtitle: {
 			enable: true,
-			html: '<a href=""> Original item source</a>', 
+			html: '<a href= ' + $scope.itemSource + '> Original item source </a>',
 			css: {
 				'text-align': 'center',
 			}
@@ -83,6 +111,7 @@ angular.module('ResultDetailCtrl', ['ResultService', 'ExperimentService'])
 	}
 	];
 });
+
 
 	function emotionChartData(emotionData, emotion){
 		var emotions = [];
