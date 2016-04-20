@@ -19,7 +19,7 @@
 					<td>{{result._id}}</td>
 					<td>{{result.itemData[0].itemID}}</td>
 					<td><a href="{{constructHrefUrl(result.itemData[0].dataType, result.itemData[0].data)}}">View Item</a></td>
-					<td>{{result.resultData[0].emotionData.length}}</td>
+					<td>{{result.resultData[0].emotionData.length}}</td> 
 					<td><a href='/result/{{result._id}}'>View</a></td>
 					<td><a ng-click="delete(result._id)">Delete</a></td>
 				</tr>

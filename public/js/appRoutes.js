@@ -3,13 +3,13 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
     $routeProvider
 
-        // Home Page (Experiments Listing)
+        // Result listing
         .when('/', {
             templateUrl: 'views/home.html',
             controller: 'ResultsController'
         })
 
-        // Experiment Detail Page
+        // Result detail
         .when('/result/:id', {
             templateUrl: 'views/result.html',
             controller: 'ResultDetailController'
