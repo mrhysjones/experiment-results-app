@@ -38,12 +38,3 @@ a {
 	}
 }
 
-/* Experiment preview styles */
-iframe{
-    background-color: transparent;
-    border: 0px none transparent;
-    padding: 0px;
-    overflow: hidden;
-    width: 75%;
-}
-
